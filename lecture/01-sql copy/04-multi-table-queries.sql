@@ -39,5 +39,28 @@ VALUES
 
 
 -- INNER JOIN
+-- 1단계. 두 테이블 결합 후 조건을 만족하는 정보 출력
+-- 작성자가 존재하는 모든 게시글을 출력력
+SELECT * FROM articles
+INNER JOIN users
+  ON users.id = articles.userId;
+
+-- 2단계. 최종 출력 필드에 맞게 title 과 name 만 조회
+SELECT articles.title, users.name 
+FROM articles
+INNER JOIN users
+  ON users.id = articles.userId;
+
+-- 3단계. 1번 작성자가 적성한 게시글만 조회
+SELECT articles.title, users.name 
+FROM articles
+INNER JOIN users
+  ON users.id = articles.userId
+WHERE 
+  users.id = 1;
 
 -- LEFT JOIN
+SELECT users.name FROM users
+LEFT JOIN articles
+  ON articles.userId = users.id
+WHERE articles.userId IS NULL;

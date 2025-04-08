@@ -1,4 +1,4 @@
--- Active: 1744003065420@@127.0.0.1@3306
+
 -- 1.
 SELECT *
 FROM users
@@ -40,6 +40,10 @@ WHERE balance = (
 )
 GROUP BY country
 ORDER BY balance DESC;
+
+SELECT first_name, last_name, age, phone, country, MAX(balance) AS max_balance
+FROM users
+GROUP BY country;
 
 --7.
 SELECT *
