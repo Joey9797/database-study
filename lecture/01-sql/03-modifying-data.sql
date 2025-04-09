@@ -1,4 +1,3 @@
--- Active: 1744074890226@@127.0.0.1@3306
 -- 공통
 SELECT * FROM articles;
 DROP TABLE articles;
@@ -22,13 +21,14 @@ INSERT INTO
   articles (title, content, createdAt)
 VALUES
   ('title1', 'content1', '1900-01-01'),
-  ('title1', 'content1', '1800-01-01'),
-  ('title1', 'content1', '1700-01-01');
+  ('title2', 'content2', '1800-01-01'),
+  ('title3', 'content3', '1700-01-01');
 
 INSERT INTO
   articles (title, content, createdAt)
 VALUES
   ('mytitle', 'mycontent', DATE());
+
 
 -- 2. Update data in table
 UPDATE
@@ -38,7 +38,20 @@ SET
 WHERE
   id = 1;
 
+UPDATE
+  articles
+SET
+  title = 'update Title',
+  content = 'update Content'
+WHERE
+  id = 2;
+
 -- 3. Delete data from table
+DELETE FROM 
+  articles
+WHERE
+  id = 1;
+
 DELETE FROM
   articles
 WHERE id IN (
@@ -48,3 +61,7 @@ WHERE id IN (
   LIMIT 2
 );
 
+SELECT id
+FROM articles
+ORDER BY createdAt
+LIMIT 2;
